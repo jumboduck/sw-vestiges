@@ -24,7 +24,7 @@ class Location(models.Model):
 class LocationConnection(models.Model):
     is_active = models.BooleanField(null=False, default=True)
     origin = models.ForeignKey(
-        'Location', null=False, blank=False, default='void', on_delete=models.CASCADE)
+        'Location', null=False, blank=False, default='void', on_delete=models.CASCADE, related_name='origin')
     destination = models.ForeignKey(
-        'Location', null=False, blank=False, default='void', on_delete=models.CASCADE)
+        'Location', null=False, blank=False, default='void', on_delete=models.CASCADE, related_name='destination')
     is_reversible = models.BooleanField(null=False, blank=False, default=True)
