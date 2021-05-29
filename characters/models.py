@@ -10,7 +10,8 @@ class Character(models.Model):
     image = models.ImageField(upload_to='situations', null=True, blank=True)
     description = models.TextField(max_length=5000, null=False, blank=False)
     situation = models.ForeignKey(
-        'locations.Situation', null=False, blank=False)
-    user = models.ForeignKey(User)
+        'locations.Situation', null=False, blank=False, on_delete=models.PROTECT)
+    user = models.ForeignKey(User, null=True, blank=True,
+                             on_delete=models.SET_NULL)
     is_absent = models.BooleanField(null=False, default=False)
     is_alive = models.BooleanField(null=False, default=True)
