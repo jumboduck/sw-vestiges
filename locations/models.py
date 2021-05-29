@@ -11,6 +11,9 @@ class Situation(models.Model):
         'Location', null=False, blank=False, on_delete=models.CASCADE, default='void')
     display_rank = models.IntegerField(null=False, blank=False, default=0)
 
+    def __str__(self):
+        return f'{self.location.name}/{self.name}'
+
 
 class Location(models.Model):
     is_active = models.BooleanField(null=False, default=True)
@@ -19,6 +22,9 @@ class Location(models.Model):
     image = models.ImageField(upload_to='locations', null=True, blank=True)
     description = models.TextField(max_length=2000, null=False, blank=False)
     display_rank = models.IntegerField(null=False, blank=False, default=0)
+
+    def __str__(self):
+        return self.name
 
 
 class LocationConnection(models.Model):

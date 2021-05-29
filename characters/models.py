@@ -15,3 +15,6 @@ class Character(models.Model):
                              on_delete=models.SET_NULL)
     is_absent = models.BooleanField(null=False, default=False)
     is_alive = models.BooleanField(null=False, default=True)
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'
