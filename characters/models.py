@@ -12,5 +12,5 @@ class Character(models.Model):
     situation = models.ForeignKey(
         'locations.Situation', null=False, blank=False)
     user = models.ForeignKey(User)
-    is_active = models.BooleanField(null=False, default=False)
+    is_absent = models.BooleanField(null=False, default=False)
     is_alive = models.BooleanField(null=False, default=True)
