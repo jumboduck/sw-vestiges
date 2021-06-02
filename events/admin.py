@@ -4,13 +4,13 @@ from .models import Event, EventType, CharacterEvent
 
 class EventAdmin(admin.ModelAdmin):
     list_display = (
-        'author',
         'event_type',
         'situation_origin',
+        'author',
         'created',
     )
 
-    ordering = ('-created')
+    ordering = ('-created',)
 
 
 class EventTypeAdmin(admin.ModelAdmin):
@@ -19,7 +19,7 @@ class EventTypeAdmin(admin.ModelAdmin):
         'description',
     )
 
-    ordering = ('name')
+    ordering = ('name',)
 
 
 class CharacterEventAdmin(admin.ModelAdmin):
@@ -28,7 +28,7 @@ class CharacterEventAdmin(admin.ModelAdmin):
         'event',
     )
 
-    ordering = ('character')
+    ordering = ('character',)
 
 
 admin.site.register(Event, EventAdmin)

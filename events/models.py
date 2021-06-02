@@ -28,9 +28,9 @@ class Event(models.Model):
         message = ''
         date = self.created.strftime('%d/%m/%Y, %H:%M:%S')
         if self.author:
-            message = f'({date}) {self.author}: {self.event_type}'
+            message = f'({date}) {self.event_type} de {self.author}'
         else:
-            message = f'({date}): {self.event_type}'
+            message = f'({date}) {self.event_type}'
         return message
 
 
@@ -41,4 +41,4 @@ class CharacterEvent(models.Model):
         Event, null=False, blank=False, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f'{self.character} / {self.event}'
+        return f'{self.character} / {self.character.situation} / {self.event}'
