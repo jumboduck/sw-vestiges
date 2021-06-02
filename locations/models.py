@@ -12,7 +12,7 @@ class Situation(models.Model):
     display_rank = models.IntegerField(null=False, blank=False, default=0)
 
     def __str__(self):
-        return f'{self.location.name}/{self.name}'
+        return f'{self.location.name} / {self.name}'
 
 
 class Location(models.Model):
