@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Situation(models.Model):
-    is_active = models.BooleanField(null=False, default=True)
+    is_active = models.BooleanField(null=False, blank=False, default=True)
     name = models.CharField(max_length=30, null=False, blank=False)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(upload_to='situations', null=True, blank=True)
@@ -16,7 +16,7 @@ class Situation(models.Model):
 
 
 class Location(models.Model):
-    is_active = models.BooleanField(null=False, default=True)
+    is_active = models.BooleanField(null=False, blank=False, default=True)
     name = models.CharField(max_length=30, null=False, blank=False)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
     image = models.ImageField(upload_to='locations', null=True, blank=True)
@@ -28,7 +28,7 @@ class Location(models.Model):
 
 
 class LocationConnection(models.Model):
-    is_active = models.BooleanField(null=False, default=True)
+    is_active = models.BooleanField(null=False, blank=False, default=True)
     origin = models.ForeignKey(
         'Location', null=False, blank=False, default='void', on_delete=models.CASCADE, related_name='origin')
     destination = models.ForeignKey(

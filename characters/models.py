@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Character(models.Model):
-    is_active = models.BooleanField(null=False, default=True)
+    is_active = models.BooleanField(null=False, blank=False, default=True)
     first_name = models.CharField(max_length=30, null=False, blank=False)
     last_name = models.CharField(max_length=30, null=False, blank=False)
     image_url = models.URLField(max_length=1024, null=True, blank=True)
