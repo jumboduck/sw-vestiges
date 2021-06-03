@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 
 
 class Character(models.Model):
@@ -11,8 +11,8 @@ class Character(models.Model):
     description = models.TextField(max_length=5000, null=False, blank=False)
     situation = models.ForeignKey(
         'locations.Situation', null=False, blank=False, on_delete=models.PROTECT)
-    user = models.ForeignKey(User, null=True, blank=True,
-                             on_delete=models.SET_NULL)
+    user = models.ForeignKey('profiles.UserProfile', null=True, blank=True,
+                             on_delete=models.SET_NULL, default=settings.USER_ADMIN)
     is_absent = models.BooleanField(null=False, default=False)
     is_alive = models.BooleanField(null=False, default=True)
 

@@ -6,6 +6,7 @@ class CharacterAdmin(admin.ModelAdmin):
     list_display = (
         'last_name',
         'first_name',
+        'user',
         'situation',
         'is_active',
         'is_alive',
