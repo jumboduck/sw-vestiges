@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'locations',
     'characters',
     'events',
+    'profiles',
 ]
 
 MIDDLEWARE = [
