@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 
 
 class Character(models.Model):
@@ -12,7 +11,7 @@ class Character(models.Model):
     situation = models.ForeignKey(
         'locations.Situation', null=False, blank=False, on_delete=models.PROTECT)
     user = models.ForeignKey('profiles.UserProfile', null=True, blank=True,
-                             on_delete=models.SET_NULL, default=settings.USER_ADMIN)
+                             on_delete=models.SET_NULL)
     is_absent = models.BooleanField(null=False, default=False)
     is_alive = models.BooleanField(null=False, default=True)
 
