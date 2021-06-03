@@ -8,4 +8,4 @@ class UserProfile(models.Model):
     is_anim = models.BooleanField(null=False, blank=False, default=False)
 
     def __str__(self):
-        return self.user.email
+        return self.user.username
