@@ -4,6 +4,8 @@ from django.contrib.auth.models import User
 
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.PROTECT)
+    active_character = models.ForeignKey(
+        'characters.Character', null=True, blank=True, on_delete=models.SET_NULL)
     is_active = models.BooleanField(null=False, blank=False, default=True)
     is_anim = models.BooleanField(null=False, blank=False, default=False)
 
