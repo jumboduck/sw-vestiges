@@ -12,18 +12,13 @@
     <div class="row">
         {% for char_sit in characters_situations %}
         <div class="col">
-            <h3>{{ char_sit.situation.name }}</h3>
+            <h5><a href="{% url 'move_active_character' char_sit.situation.id %}">{{ char_sit.situation.name }}</a></h5>
             {% for character in char_sit.characters %}
             <p></p>
             <a href="#characterModal{{ character.id }}" data-toggle="modal"
                 data-target="#characterModal{{ character.id }}">
                 {{ character.first_name }} {{ character.last_name }}
             </a>
-
-            <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
-                data-target="#characterModal{{ character.id }}">
-                {{ character.first_name }} {{ character.last_name }}
-            </button> -->
 
             <div class="modal" id="characterModal{{ character.id }}" tabindex="-1" role="dialog"
                 aria-labelledby="characterModalLabel{{ character.id }}" aria-hidden="true">

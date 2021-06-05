@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 
 from .models import Character
+from locations.models import Location, Situation
 from .forms import CharacterForm, EditCharacterForm
+
+from .helpers import get_active_character
 
 
 @login_required
@@ -52,3 +55,15 @@ def character_detail(request, character_id):
     template = 'characters/character_detail.html'
 
     return render(request, template, context)
+
+
+@login_required
+def move_active_character(request, destination_id):
+    active_character = get_active_character(request)
+    destination = Situation.objects.get(pk=destination_id)
+    active_character.situation = destination
+    active_character.save()
+
+    location = Location.objects.get(pk=destination.location.id)
+
+    return redirect(reverse('view_location', args=[location.id]))

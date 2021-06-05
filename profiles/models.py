@@ -11,3 +11,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+
+    def __repr__(self):
+        return f'{self.user.username}, {self.active_character.id}'
