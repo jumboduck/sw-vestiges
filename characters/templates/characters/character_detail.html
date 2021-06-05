@@ -7,6 +7,7 @@
         <div class="col">
             <h1>{{ character.first_name }} {{ character.last_name }}</h1>
             <p>{{ character.description }}</p>
+            <a href="{% url 'edit_character' character.id %}">Modifier le personage</a>
         </div>
     </div>
 </div>
