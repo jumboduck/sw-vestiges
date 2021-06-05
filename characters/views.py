@@ -49,5 +49,6 @@ def character_detail(request, character_id):
     context = {
         'character': character,
     }
+    template = 'characters/character_detail.html'
 
-    return render(request, 'characters/character_detail.html', context)
+    return render(request, template, context)
