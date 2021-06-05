@@ -9,7 +9,7 @@ class CharacterForm(forms.ModelForm):
 
     class Meta:
         model = Character
-        fields = '__all__'
+        fields = ['first_name', 'last_name', 'description']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

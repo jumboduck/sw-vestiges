@@ -9,6 +9,6 @@ def add_character(request):
     # Create a new character
     form = CharacterForm
     context = {'form': form, }
-    template = 'templates/add_character.html'
+    template = 'characters/add_character.html'
 
     return render(request, template, context)
