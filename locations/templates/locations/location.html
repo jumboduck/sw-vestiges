@@ -14,11 +14,38 @@
         <div class="col">
             <h3>{{ char_sit.situation.name }}</h3>
             {% for character in char_sit.characters %}
-            <p>{{ character.first_name }} {{ character.last_name }}</p>
+            <p></p>
+            <a href="#characterModal{{ character.id }}" data-toggle="modal"
+                data-target="#characterModal{{ character.id }}">
+                {{ character.first_name }} {{ character.last_name }}
+            </a>
+
+            <!-- <button type="button" class="btn btn-primary" data-toggle="modal"
+                data-target="#characterModal{{ character.id }}">
+                {{ character.first_name }} {{ character.last_name }}
+            </button> -->
+
+            <div class="modal" id="characterModal{{ character.id }}" tabindex="-1" role="dialog"
+                aria-labelledby="characterModalLabel{{ character.id }}" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="characterModalLabel{{ character.id }}">
+                                {{ character.first_name}} {{ character.last_name }}
+                            </h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>{{ character.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             {% endfor %}
         </div>
         {% endfor %}
     </div>
-</div>
 
-{% endblock %}
+    {% endblock %}
