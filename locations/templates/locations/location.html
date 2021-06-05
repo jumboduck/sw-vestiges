@@ -10,9 +10,12 @@
         </div>
     </div>
     <div class="row">
-        {% for situation in situations %}
+        {% for char_sit in characters_situations %}
         <div class="col">
-            <strong>{{ situation.name }}</strong>
+            <h3>{{ char_sit.situation.name }}</h3>
+            {% for character in char_sit.characters %}
+            <p>{{ character.first_name }} {{ character.last_name }}</p>
+            {% endfor %}
         </div>
         {% endfor %}
     </div>
