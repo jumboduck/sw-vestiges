@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ character.first_name }} {{ character.last_name }}</h1>
+            <p>{{ character.description }}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
