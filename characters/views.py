@@ -10,7 +10,6 @@ from .helpers import get_active_character
 
 @login_required
 def add_character(request):
-    # Create a new character
     if request.POST:
         form = CharacterForm(request.POST)
         if form.is_valid():
@@ -46,7 +45,7 @@ def edit_character(request, character_id):
     return render(request, template, context)
 
 
-@login_required
+# @login_required
 def character_detail(request, character_id):
     character = get_object_or_404(Character, pk=character_id)
     context = {

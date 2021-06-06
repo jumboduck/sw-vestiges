@@ -46,10 +46,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+
+    # Allauth
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    # Imports
     'crispy_forms',
+    'coverage',
+
+    # Model apps
     'home',
     'locations',
     'characters',
