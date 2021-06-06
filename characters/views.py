@@ -59,11 +59,13 @@ def character_detail(request, character_id):
 
 @login_required
 def move_active_character(request, destination_id):
-    active_character = get_active_character(request)
     destination = Situation.objects.get(pk=destination_id)
-    active_character.situation = destination
-    active_character.save()
+    active_character = get_active_character(request)
+    if active_character:
+        active_character.situation = destination
+        active_character.save()
 
-    location = Location.objects.get(pk=destination.location.id)
+        location = Location.objects.get(pk=destination.location.id)
+        return redirect(reverse('view_location', args=[location.id]))
 
-    return redirect(reverse('view_location', args=[location.id]))
+    return redirect(reverse('home'))
