@@ -26,7 +26,6 @@ def add_character(request):
 @login_required
 def edit_character(request, character_id):
     character = get_object_or_404(Character, pk=character_id)
-    print("hi")
 
     if request.POST:
         print('inside post')
@@ -45,7 +44,7 @@ def edit_character(request, character_id):
     return render(request, template, context)
 
 
-# @login_required
+@login_required
 def character_detail(request, character_id):
     character = get_object_or_404(Character, pk=character_id)
     context = {
