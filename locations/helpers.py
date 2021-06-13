@@ -17,10 +17,14 @@ def get_possible_destinations(origin_id):
     destinations = []
 
     for connection in connections_to:
-        destinations.append(connection.destination)
+        dest_situation = Situation.objects.filter(
+            location=connection.destination).first()
+        destinations.append(dest_situation)
 
     for connection in connections_from:
-        destinations.append(connection.origin)
+        dest_situation = Situation.objects.filter(
+            location=connection.origin).first()
+        destinations.append(dest_situation)
 
     return destinations
 

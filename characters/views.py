@@ -76,6 +76,17 @@ def move_active_character(request, destination_id):
 
 
 @login_required
+def change_active_character_location(request):
+    current_location = get_current_location(request)
+    destinations = get_possible_destinations(current_location.id)
+    context = {
+        'destinations': destinations,
+    }
+    template = 'characters/change_location.html'
+    return render(request, template, context)
+
+
+@login_required
 def user_character(request):
     profile = UserProfile.objects.get(user=request.user)
     characters = Character.objects.filter(user=profile)

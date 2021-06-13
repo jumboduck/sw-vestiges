@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Se déplacer</h1>
+            {% for destination in destinations %}
+            <div class="row">
+                <div class="col-md-9">{{ destination.location }}</div>
+                <div class="col-md-3"><a href="{% url 'move_active_character' destination.id %}">Se déplacer</a></div>
+            </div>
+            {% endfor %}
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
