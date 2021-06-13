@@ -12,7 +12,7 @@
                     <a class="nav-link" aria-current="page" href="#">Situation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Personnage</a>
+                    <a class="nav-link" href="{% url 'user_character' %}">Personnage</a>
                 </li>
                 {% if request.user.is_superuser %}
                 <li class="nav-item">

@@ -3,6 +3,14 @@
 {% block content %}
 
 <div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>{{ active_character.first_name }} {{ active_character.last_name }}</h1>
+            <p>{{ active_character.description }}</p>
+            <a href="{% url 'edit_character' active_character.id %}">Modifier le personnage</a>
+        </div>
+    </div>
+    <h2>Autres personnages</h2>
     {% for character in characters %}
     <div class="row">
         <div class="col-md-6">
@@ -12,7 +20,11 @@
             {{ character.situation }}
         </div>
         <div class="col-md-3">
+            {% if character == active_character %}
+            Actif
+            {% else %}
             <a href="{% url 'change_active_character' character.id %}">Activer</a>
+            {% endif %}
         </div>
     </div>
     {% endfor %}

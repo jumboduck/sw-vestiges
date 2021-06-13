@@ -77,10 +77,12 @@ def move_active_character(request, destination_id):
 
 
 @login_required
-def list_user_characters(request):
+def user_character(request):
     profile = UserProfile.objects.get(user=request.user)
     characters = Character.objects.filter(user=profile)
+    active_character = get_active_character(request)
     context = {
+        'active_character': active_character,
         'characters': characters,
     }
     template = 'characters/list_user_characters.html'
