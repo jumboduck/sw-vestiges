@@ -3,18 +3,24 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Character
 from locations.models import Location, Situation
+from profiles.models import UserProfile
 from .forms import CharacterForm, EditCharacterForm
 
-from .helpers import get_active_character
+from .helpers import get_active_character, set_active_character
 
 
 @login_required
 def add_character(request):
     if request.POST:
         form = CharacterForm(request.POST)
+        profile = UserProfile.objects.get(user=request.user)
+        form.user = profile
         if form.is_valid():
-            character = form.save()
-            return redirect(reverse('character_detail', args=[character.id]))
+            new_character = form.save()
+            active_character = get_active_character(request)
+            if not active_character:
+                set_active_character(request, new_character.id)
+            return redirect(reverse('character_detail', args=[new_character.id]))
 
     form = CharacterForm
     context = {'form': form, }

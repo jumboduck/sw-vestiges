@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Character(models.Model):
-    is_active = models.BooleanField(null=False, blank=False, default=True)
+    is_active = models.BooleanField(null=False, blank=False, default=False)
     first_name = models.CharField(
         max_length=30, null=False, blank=False, verbose_name='prénom')
     last_name = models.CharField(
