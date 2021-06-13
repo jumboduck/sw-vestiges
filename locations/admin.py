@@ -26,6 +26,7 @@ class LocationConnectionAdmin(admin.ModelAdmin):
         'origin',
         'destination',
         'is_active',
+        'is_reversible',
     )
 
     ordering = ('origin', 'destination')

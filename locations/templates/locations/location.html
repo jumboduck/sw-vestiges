@@ -9,7 +9,7 @@
             <p>{{ location.description }}</p>
         </div>
     </div>
-    <div class="row">
+    <div class="row mb-5">
         {% for char_sit in characters_situations %}
         <div class="col">
             <h5><a href="{% url 'move_active_character' char_sit.situation.id %}">{{ char_sit.situation.name }}</a></h5>
@@ -41,6 +41,18 @@
             {% endfor %}
         </div>
         {% endfor %}
+        <hr>
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            LOGS ICI
+        </div>
+        <div class="col-md-3">
+            <h3>Actions:</h3>
+            <ul>
+                <li><a href="{% url 'change_active_character_location' %}">Se déplacer</a></li>
+            </ul>
+        </div>
     </div>
 
     {% endblock %}

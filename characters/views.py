@@ -6,7 +6,7 @@ from .forms import CharacterForm, EditCharacterForm
 from .helpers import get_active_character, set_active_character
 from profiles.models import UserProfile
 from locations.models import Location, Situation
-from locations.helpers import get_possible_destinations, get_current_location
+from locations.helpers import get_possible_destinations, get_current_location, get_current_situation
 
 
 @login_required
@@ -77,9 +77,10 @@ def move_active_character(request, destination_id):
 
 @login_required
 def change_active_character_location(request):
-    current_location = get_current_location(request)
+    current_location = get_current_situation(request)
     destinations = get_possible_destinations(current_location.id)
     context = {
+        'current_location': current_location,
         'destinations': destinations,
     }
     template = 'characters/change_location.html'

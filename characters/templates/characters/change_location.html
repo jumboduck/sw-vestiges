@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Se déplacer</h1>
+            <h1>Se déplacer de {{ current_location.location.name }}</h1>
             {% for destination in destinations %}
             <div class="row">
                 <div class="col-md-9">{{ destination.location }}</div>
