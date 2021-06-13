@@ -2,11 +2,11 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 
 from .models import Character
-from locations.models import Location, Situation
-from profiles.models import UserProfile
 from .forms import CharacterForm, EditCharacterForm
-
 from .helpers import get_active_character, set_active_character
+from profiles.models import UserProfile
+from locations.models import Location, Situation
+from locations.helpers import get_possible_destinations, get_current_location
 
 
 @login_required
@@ -35,7 +35,6 @@ def edit_character(request, character_id):
     character = get_object_or_404(Character, pk=character_id)
 
     if request.POST:
-        print('inside post')
         form = EditCharacterForm(request.POST, instance=character)
         if form.is_valid():
             form.save()

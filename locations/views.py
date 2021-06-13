@@ -18,7 +18,6 @@ def view_location(request, location_id):
             'situation': situation,
             'characters': characters
         }
-        print(data)
         characters_situations.append(data)
 
     context = {
