@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container">
+    {% for character in characters %}
+    <div class="row">
+        <div class="col-md-6">
+            {{ character.first_name }} {{ character.last_name }}
+        </div>
+        <div class="col-md-3">
+            {{ character.situation }}
+        </div>
+        <div class="col-md-3">
+            <a href="{% url 'change_active_character' character.id %}">Activer</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

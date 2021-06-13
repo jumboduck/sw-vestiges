@@ -74,3 +74,20 @@ def move_active_character(request, destination_id):
         return redirect(reverse('view_location', args=[location.id]))
 
     return redirect(reverse('home'))
+
+
+@login_required
+def list_user_characters(request):
+    profile = UserProfile.objects.get(user=request.user)
+    characters = Character.objects.filter(user=profile)
+    context = {
+        'characters': characters,
+    }
+    template = 'characters/list_user_characters.html'
+    return render(request, template, context)
+
+
+@login_required
+def change_active_character(request, character_id):
+    set_active_character(request, character_id)
+    return redirect(reverse('home'))
