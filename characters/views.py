@@ -13,10 +13,11 @@ from .helpers import get_active_character, set_active_character
 def add_character(request):
     if request.POST:
         form = CharacterForm(request.POST)
-        profile = UserProfile.objects.get(user=request.user)
-        form.user = profile
         if form.is_valid():
             new_character = form.save()
+            profile = UserProfile.objects.get(user=request.user)
+            new_character.user = profile
+            new_character.save()
             active_character = get_active_character(request)
             if not active_character:
                 set_active_character(request, new_character.id)
