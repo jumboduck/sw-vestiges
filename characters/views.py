@@ -71,7 +71,6 @@ def move_active_character(request, destination_id):
         active_character.situation = chosen_destination
         active_character.save()
 
-        #location = Location.objects.get(pk=chosen_destination.location.id)
         return redirect(reverse('home'))
 
     return redirect(reverse('home'))
