@@ -10,6 +10,6 @@ urlpatterns = [
     path('list/', views.user_character, name='user_character'),
     path('switch/<int:character_id>/',
          views.change_active_character, name='change_active_character'),
-    path('change_location/', views.change_active_character_location,
-         name='change_active_character_location'),
+    path('change_location/', views.view_active_character_destinations,
+         name='view_active_character_destinations'),
 ]

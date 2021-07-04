@@ -63,20 +63,22 @@ def character_detail(request, character_id):
 
 @login_required
 def move_active_character(request, destination_id):
-    destination = Situation.objects.get(pk=destination_id)
+    current_location = get_current_situation(request)
+    possible_destinations = get_possible_destinations(current_location.id)
+    chosen_destination = Situation.objects.get(pk=destination_id)
     active_character = get_active_character(request)
-    if active_character:
-        active_character.situation = destination
+    if active_character and chosen_destination in possible_destinations:
+        active_character.situation = chosen_destination
         active_character.save()
 
-        location = Location.objects.get(pk=destination.location.id)
-        return redirect(reverse('view_location', args=[location.id]))
+        location = Location.objects.get(pk=chosen_destination.location.id)
+        return redirect(reverse('home', args=[location.id]))
 
     return redirect(reverse('home'))
 
 
 @login_required
-def change_active_character_location(request):
+def view_active_character_destinations(request):
     current_location = get_current_situation(request)
     destinations = get_possible_destinations(current_location.id)
     context = {
