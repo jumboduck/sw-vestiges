@@ -5,8 +5,8 @@ from .models import Character
 from .forms import CharacterForm, EditCharacterForm
 from .helpers import get_active_character, set_active_character
 from profiles.models import UserProfile
-from locations.models import Location, Situation
-from locations.helpers import get_possible_destinations, get_current_location, get_current_situation
+from locations.models import Situation
+from locations.helpers import get_possible_destinations, get_current_situation
 
 
 @login_required
