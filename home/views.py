@@ -7,13 +7,13 @@ from locations.models import Situation, Location
 from characters.models import Character
 
 
-def index(request, location_id=None):
+def index(request):
     template = 'home/index.html'
     if request.user.is_authenticated:
         active_character = get_active_character(request)
         if active_character:
+            location_id = active_character.situation.location.id
             if active_character.is_active:
-                location_id = active_character.situation.location.id
                 location = get_object_or_404(Location, pk=location_id)
                 situations = Situation.objects.filter(location=location)
 
