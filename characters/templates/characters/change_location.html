@@ -6,12 +6,24 @@
     <div class="row">
         <div class="col">
             <h1>Se déplacer de {{ current_location.location.name }}</h1>
-            {% for destination in destinations %}
+
+            <h2>Autres lieux:</h2>
+
+            {% for destination in locations %}
             <div class="row">
                 <div class="col-md-9">{{ destination.location }}</div>
                 <div class="col-md-3"><a href="{% url 'move_active_character' destination.id %}">Se déplacer</a></div>
             </div>
             {% endfor %}
+
+            <h2>Autres situations dans {{ current_location.location.name }}:</h2>
+            {% for destination in situations %}
+            <div class="row">
+                <div class="col-md-9">{{ destination.name }}</div>
+                <div class="col-md-3"><a href="{% url 'move_active_character' destination.id %}">Se déplacer</a></div>
+            </div>
+            {% endfor %}
+
             </form>
         </div>
     </div>

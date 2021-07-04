@@ -80,9 +80,22 @@ def move_active_character(request, destination_id):
 def view_active_character_destinations(request):
     current_location = get_current_situation(request)
     destinations = get_possible_destinations(current_location.id)
+
+    neighbor_situations = filter(
+        lambda destination: destination.location == current_location.location,
+        destinations
+    )
+
+    other_location_situations = filter(
+        lambda destination: destination.location != current_location.location,
+        destinations
+    )
+
     context = {
         'current_location': current_location,
         'destinations': destinations,
+        'situations': neighbor_situations,
+        'locations': other_location_situations,
     }
     template = 'characters/change_location.html'
     return render(request, template, context)
