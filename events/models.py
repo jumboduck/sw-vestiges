@@ -15,7 +15,11 @@ class EventType(models.Model):
 class Event(models.Model):
     is_active = models.BooleanField(null=False, blank=False, default=True)
     author = models.ForeignKey(
-        'characters.Character', null=True, blank=True, on_delete=models.PROTECT)
+        'characters.Character', null=True, blank=True, on_delete=models.PROTECT, related_name='event_author'
+    )
+    recipients = models.ManyToManyField(
+        'characters.Character', blank=True, related_name='event_recipients'
+    )
     event_type = models.ForeignKey(
         EventType, null=False, blank=False, on_delete=models.PROTECT, default='')
     situation_origin = models.ForeignKey('locations.Situation', null=True, blank=True,
