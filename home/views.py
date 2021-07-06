@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
-from django.contrib.auth.decorators import login_required
 
-from profiles.models import UserProfile
 from characters.helpers import get_active_character
 from locations.models import Situation, Location
 from characters.models import Character
+from events.models import Event
+from events.helpers import get_active_character_logs
 
 
 def index(request):
@@ -14,6 +14,9 @@ def index(request):
         if active_character:
             location_id = active_character.situation.location.id
             if active_character.is_active:
+                logs = Event.objects.filter(recipients=active_character)
+                print(logs)
+                print(logs)
                 location = get_object_or_404(Location, pk=location_id)
                 situations = Situation.objects.filter(location=location)
 
@@ -30,6 +33,7 @@ def index(request):
                 context = {
                     'location': location,
                     'characters_situations': characters_situations,
+                    'logs': logs,
                 }
                 template = 'locations/location.html'
 

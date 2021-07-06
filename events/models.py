@@ -18,7 +18,7 @@ class Event(models.Model):
         'characters.Character', null=True, blank=True, on_delete=models.PROTECT, related_name='event_author'
     )
     recipients = models.ManyToManyField(
-        'characters.Character', blank=True, related_name='event_recipients'
+        'characters.Character', blank=True,
     )
     event_type = models.ForeignKey(
         EventType, null=False, blank=False, on_delete=models.PROTECT, default='')

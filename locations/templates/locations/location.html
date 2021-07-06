@@ -45,7 +45,23 @@
     </div>
     <div class="row">
         <div class="col-md-9">
-            LOGS ICI
+            {% for log in logs %}
+            <div>
+                {% if log.author %}
+                <div>De: {{ log.author }}</div>
+                {% endif %}
+                <div>
+                    Destinataires:
+                    {% for recipient in log.recipients.all %}
+                    {{recipient}},
+                    {% endfor %}
+                </div>
+                <div>
+                    {{ log.content }}
+                    <hr>
+                </div>
+            </div>
+            {% endfor %}
         </div>
         <div class="col-md-3">
             <h3>Actions:</h3>
