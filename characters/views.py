@@ -6,7 +6,7 @@ from .forms import CharacterForm, EditCharacterForm, NewMessageForm
 from .helpers import get_active_character, set_active_character
 from profiles.models import UserProfile
 from locations.models import Situation
-from locations.helpers import get_possible_destinations, get_current_situation
+from locations.helpers import get_possible_destinations, get_current_situation, get_current_location, get_characters_in_situation, get_characters_in_location
 
 
 @login_required
@@ -126,8 +126,16 @@ def create_message(request):
         form = NewMessageForm(request.POST)
         if form.is_valid():
             recipients = form.cleaned_data['recipients']
+            if recipients == 'situation':
+                list_of_recipients = get_characters_in_situation(
+                    get_current_situation(request)
+                )
+            elif recipients == 'location':
+                list_of_recipients = get_characters_in_location(
+                    get_current_location(request)
+                )
             content = form.cleaned_data['content']
-            print(f'{recipients}: {content}')
+            print(f'{list_of_recipients}: {content}')
             return redirect(reverse('home'))
     else:
         form = NewMessageForm()

@@ -1,7 +1,7 @@
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
-from .models import Situation, Location, LocationConnection
+from .models import Situation, LocationConnection
 from profiles.models import UserProfile
+from characters.models import Character
 
 
 def get_possible_destinations(origin_id):
@@ -45,3 +45,11 @@ def get_current_location(request):
 def get_current_situation(request):
     profile = UserProfile.objects.get(user=request.user)
     return profile.active_character.situation
+
+
+def get_characters_in_situation(situation):
+    return Character.objects.filter(situation=situation)
+
+
+def get_characters_in_location(location):
+    return Character.objects.filter(situation__location=location)
