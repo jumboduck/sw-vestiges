@@ -12,4 +12,6 @@ urlpatterns = [
          views.change_active_character, name='change_active_character'),
     path('change_location/', views.view_active_character_destinations,
          name='view_active_character_destinations'),
+    path('create_message/', views.create_message,
+         name='create_message'),
 ]

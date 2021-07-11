@@ -4,7 +4,6 @@ from characters.helpers import get_active_character
 from locations.models import Situation, Location
 from characters.models import Character
 from events.models import Event
-from events.helpers import get_active_character_logs
 
 
 def index(request):

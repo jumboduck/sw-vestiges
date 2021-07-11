@@ -118,3 +118,11 @@ def user_character(request):
 def change_active_character(request, character_id):
     set_active_character(request, character_id)
     return redirect(reverse('home'))
+
+
+@login_required
+def create_message(request):
+    if request.POST:
+        return redirect(reverse('home'))
+    else:
+        return render(request, 'characters/create_message.html')
