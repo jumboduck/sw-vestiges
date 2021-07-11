@@ -13,7 +13,8 @@ def index(request):
         if active_character:
             location_id = active_character.situation.location.id
             if active_character.is_active:
-                logs = Event.objects.filter(recipients=active_character)
+                logs = Event.objects.filter(
+                    recipients=active_character).order_by('-created')
                 location = get_object_or_404(Location, pk=location_id)
                 situations = Situation.objects.filter(location=location)
 
