@@ -123,7 +123,12 @@ def change_active_character(request, character_id):
 @login_required
 def create_message(request):
     if request.POST:
-        return redirect(reverse('home'))
+        form = NewMessageForm(request.POST)
+        if form.is_valid():
+            recipients = form.cleaned_data['recipients']
+            content = form.cleaned_data['content']
+            print(f'{recipients}: {content}')
+            return redirect(reverse('home'))
     else:
         form = NewMessageForm()
         context = {
