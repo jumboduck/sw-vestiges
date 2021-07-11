@@ -14,3 +14,17 @@ class EditCharacterForm(forms.ModelForm):
     class Meta:
         model = Character
         fields = ['description']
+
+
+class NewMessageForm(forms.Form):
+    choices = (
+        ('situation', 'Situation'),
+        ('location', 'Lieu'),
+    )
+    recipients = forms.ChoiceField(
+        label='Destinataires',
+        choices=choices)
+    content = forms.CharField(widget=forms.Textarea,
+                              label='Message',
+                              max_length=4000,
+                              required=True)

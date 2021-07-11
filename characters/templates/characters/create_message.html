@@ -10,19 +10,7 @@
             <form action=" {% url 'create_message' %}" method="POST" id="create-message-form" class="form mb-2"
                 enctype="multipart/form-data">
                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="recipients">Destinataires:</label>
-                    <select name="recipients" id="recipients" class="form-control">
-                        <option value="situation">Situation</option>
-                        <option value="location">Lieu</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Message:</label>
-                    <textarea name="message" id="message" rows="15" class="form-control"></textarea>
-                </div>
-
+                {{ form | crispy}}
                 <button class="btn btn-primary" type="submit">Envoyer le message</button>
             </form>
         </div>

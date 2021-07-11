@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
 
 from .models import Character
-from .forms import CharacterForm, EditCharacterForm
+from .forms import CharacterForm, EditCharacterForm, NewMessageForm
 from .helpers import get_active_character, set_active_character
 from profiles.models import UserProfile
 from locations.models import Situation
@@ -125,4 +125,9 @@ def create_message(request):
     if request.POST:
         return redirect(reverse('home'))
     else:
-        return render(request, 'characters/create_message.html')
+        form = NewMessageForm()
+        context = {
+            'form': form,
+        }
+        template = 'characters/create_message.html'
+        return render(request, template, context)
