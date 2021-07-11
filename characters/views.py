@@ -5,6 +5,7 @@ from .models import Character
 from .forms import CharacterForm, EditCharacterForm, NewMessageForm
 from .helpers import get_active_character, set_active_character
 from profiles.models import UserProfile
+from events.models import Event, EventType
 from locations.models import Situation
 from locations.helpers import get_possible_destinations, get_current_situation, get_current_location, get_characters_in_situation, get_characters_in_location
 
@@ -135,7 +136,17 @@ def create_message(request):
                     get_current_location(request)
                 )
             content = form.cleaned_data['content']
-            print(f'{list_of_recipients}: {content}')
+
+            event = Event(
+                author=get_active_character(request),
+                content=content,
+                event_type=EventType.objects.get(name='Dialogue'),
+                situation_origin=get_current_situation(request)
+            )
+            event.save()
+            event.recipients.set(list_of_recipients)
+            event.save()
+
             return redirect(reverse('home'))
     else:
         form = NewMessageForm()
