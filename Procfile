@@ -1,0 +1,1 @@
+web gunicorn sw_vestiges.wsgi:application
