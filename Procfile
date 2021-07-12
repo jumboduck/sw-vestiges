@@ -1,1 +1,1 @@
-web gunicorn sw_vestiges.wsgi:application
+web: gunicorn sw_vestiges.wsgi:application
