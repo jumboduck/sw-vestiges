@@ -32,7 +32,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = [
-    '127.0.0.1',
+    '127.0.0.1'
     'sw-vestiges.herokuapp.com'
 ]
 
