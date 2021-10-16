@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Character
 from .forms import CharacterForm, EditCharacterForm, NewMessageForm
-from .helpers import get_active_character, set_active_character
+from .helpers import set_active_character
 from profiles.models import UserProfile
 from events.models import Event, EventType
 from locations.models import Situation
@@ -16,10 +16,10 @@ def add_character(request):
         form = CharacterForm(request.POST)
         if form.is_valid():
             new_character = form.save()
-            profile = UserProfile.objects.get(user=request.user)
+            profile = request.user.profile
             new_character.user = profile
             new_character.save()
-            active_character = get_active_character(request)
+            active_character = profile.get_active_character()
             if not active_character:
                 set_active_character(request, new_character.id)
             return redirect(reverse('character_detail', args=[new_character.id]))
@@ -67,7 +67,7 @@ def move_active_character(request, destination_id):
     current_location = get_current_situation(request)
     possible_destinations = get_possible_destinations(current_location.id)
     chosen_destination = Situation.objects.get(pk=destination_id)
-    active_character = get_active_character(request)
+    active_character = request.user.profile.get_active_character()
     if active_character and chosen_destination in possible_destinations:
         active_character.situation = chosen_destination
         active_character.save()
@@ -104,9 +104,9 @@ def view_active_character_destinations(request):
 
 @login_required
 def user_character(request):
-    profile = UserProfile.objects.get(user=request.user)
+    profile = request.user.profile
     characters = Character.objects.filter(user=profile)
-    active_character = get_active_character(request)
+    active_character = profile.get_active_character()
     context = {
         'active_character': active_character,
         'characters': characters,
@@ -138,7 +138,7 @@ def create_message(request):
             content = form.cleaned_data['content']
 
             event = Event(
-                author=get_active_character(request),
+                author=request.user.profile.get_active_character(),
                 content=content,
                 event_type=EventType.objects.get(name='Dialogue'),
                 situation_origin=get_current_situation(request)

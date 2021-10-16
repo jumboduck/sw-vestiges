@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 
-from characters.helpers import get_active_character
 from locations.models import Situation, Location
 from characters.models import Character
 from events.models import Event
@@ -9,7 +8,7 @@ from events.models import Event
 def index(request):
     template = 'home/index.html'
     if request.user.is_authenticated:
-        active_character = get_active_character(request)
+        active_character = request.user.profile.get_active_character()
         if active_character:
             location_id = active_character.situation.location.id
             if active_character.is_active:
