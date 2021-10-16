@@ -1,6 +1,5 @@
 from django.shortcuts import get_object_or_404
 from .models import Situation, LocationConnection
-from profiles.models import UserProfile
 from characters.models import Character
 
 
