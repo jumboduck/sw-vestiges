@@ -3,8 +3,6 @@ from django.contrib.auth.decorators import login_required
 
 from .models import Character
 from .forms import CharacterForm, EditCharacterForm, NewMessageForm
-from .helpers import set_active_character
-from profiles.models import UserProfile
 from events.models import Event, EventType
 from locations.models import Situation
 from locations.helpers import get_possible_destinations, get_current_situation, get_current_location, get_characters_in_situation, get_characters_in_location
@@ -21,7 +19,7 @@ def add_character(request):
             new_character.save()
             active_character = profile.get_active_character()
             if not active_character:
-                set_active_character(request, new_character.id)
+                request.user.profile.set_active_character(new_character.id)
             return redirect(reverse('character_detail', args=[new_character.id]))
 
     form = CharacterForm
@@ -117,7 +115,7 @@ def user_character(request):
 
 @login_required
 def change_active_character(request, character_id):
-    set_active_character(request, character_id)
+    request.user.profile.set_active_character(character_id)
     return redirect(reverse('home'))
 
 

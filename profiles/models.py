@@ -15,7 +15,6 @@ class UserProfile(models.Model):
     is_anim = models.BooleanField(null=False, blank=False, default=False)
 
     def set_active_character(self, character_id):
-        # profile = UserProfile.objects.get(user=self)
         new_active_character = get_object_or_404(Character, pk=character_id)
         if new_active_character.user == self:
             self.active_character = new_active_character
@@ -24,7 +23,6 @@ class UserProfile(models.Model):
             return None
 
     def get_active_character(self):
-        # profile = UserProfile.objects.get(user=request.user)
         if self.active_character:
             return self.active_character
         else:
