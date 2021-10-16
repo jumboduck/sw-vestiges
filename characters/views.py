@@ -5,7 +5,7 @@ from .models import Character
 from .forms import CharacterForm, EditCharacterForm, NewMessageForm
 from events.models import Event, EventType
 from locations.models import Situation
-from locations.helpers import get_possible_destinations, get_current_situation, get_characters_in_situation, get_characters_in_location
+from locations.helpers import get_possible_destinations, get_characters_in_situation, get_characters_in_location
 
 
 @login_required
@@ -62,7 +62,7 @@ def character_detail(request, character_id):
 
 @login_required
 def move_active_character(request, destination_id):
-    current_location = get_current_situation(request)
+    current_location = request.user.profile.active_character.situation
     possible_destinations = get_possible_destinations(current_location.id)
     chosen_destination = Situation.objects.get(pk=destination_id)
     active_character = request.user.profile.get_active_character()
@@ -77,7 +77,8 @@ def move_active_character(request, destination_id):
 
 @login_required
 def view_active_character_destinations(request):
-    current_location = get_current_situation(request)
+    active_character = request.user.profile.active_character
+    current_location = active_character.situation
     destinations = get_possible_destinations(current_location.id)
 
     neighbor_situations = filter(
@@ -128,7 +129,7 @@ def create_message(request):
             recipients = form.cleaned_data['recipients']
             if recipients == 'situation':
                 list_of_recipients = get_characters_in_situation(
-                    get_current_situation(request)
+                    active_character.situation
                 )
             elif recipients == 'location':
                 list_of_recipients = get_characters_in_location(
@@ -140,7 +141,7 @@ def create_message(request):
                 author=request.user.profile.get_active_character(),
                 content=content,
                 event_type=EventType.objects.get(name='Dialogue'),
-                situation_origin=get_current_situation(request)
+                situation_origin=active_character.situation
             )
             event.save()
             event.recipients.set(list_of_recipients)

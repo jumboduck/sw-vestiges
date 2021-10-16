@@ -22,5 +22,4 @@ class Character(models.Model):
 
     @property
     def location(self):
-        # profile = UserProfile.objects.get(user=request.user)
         return self.situation.location
