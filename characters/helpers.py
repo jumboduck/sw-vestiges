@@ -1,5 +1,4 @@
 from django.shortcuts import get_object_or_404
-from profiles.models import UserProfile
 from characters.models import Character
 
 
