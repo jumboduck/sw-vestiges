@@ -19,3 +19,8 @@ class Character(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    @property
+    def location(self):
+        # profile = UserProfile.objects.get(user=request.user)
+        return self.situation.location

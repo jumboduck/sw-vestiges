@@ -5,7 +5,7 @@ from .models import Character
 from .forms import CharacterForm, EditCharacterForm, NewMessageForm
 from events.models import Event, EventType
 from locations.models import Situation
-from locations.helpers import get_possible_destinations, get_current_situation, get_current_location, get_characters_in_situation, get_characters_in_location
+from locations.helpers import get_possible_destinations, get_current_situation, get_characters_in_situation, get_characters_in_location
 
 
 @login_required
@@ -121,6 +121,7 @@ def change_active_character(request, character_id):
 
 @login_required
 def create_message(request):
+    active_character = request.user.profile.active_character
     if request.POST:
         form = NewMessageForm(request.POST)
         if form.is_valid():
@@ -131,7 +132,7 @@ def create_message(request):
                 )
             elif recipients == 'location':
                 list_of_recipients = get_characters_in_location(
-                    get_current_location(request)
+                    active_character.location
                 )
             content = form.cleaned_data['content']
 

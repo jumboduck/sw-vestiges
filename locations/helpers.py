@@ -37,11 +37,6 @@ def get_possible_destinations(origin_id):
     return destinations
 
 
-def get_current_location(request):
-    profile = UserProfile.objects.get(user=request.user)
-    return profile.active_character.situation.location
-
-
 def get_current_situation(request):
     profile = UserProfile.objects.get(user=request.user)
     return profile.active_character.situation
