@@ -67,6 +67,23 @@ def move_active_character(request, destination_id):
     chosen_destination = Situation.objects.get(pk=destination_id)
     active_character = request.user.profile.get_active_character()
     if active_character and chosen_destination in possible_destinations:
+        if chosen_destination.location == current_location.location:
+            destination_str = chosen_destination.name
+        else:
+            destination_str = chosen_destination.location
+        event_content = f'{active_character} se déplace vers {destination_str}'
+        event = Event(
+            author=request.user.profile.get_active_character(),
+            content=event_content,
+            event_type=EventType.objects.get(name='Deplacement'),
+            situation_origin=active_character.situation
+        )
+        event.save()
+        list_of_recipients = get_characters_in_location(
+            current_location.location
+        )
+        event.recipients.set(list_of_recipients)
+        event.save()
         active_character.situation = chosen_destination
         active_character.save()
 
