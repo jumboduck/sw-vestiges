@@ -10,8 +10,8 @@ def index(request):
     if request.user.is_authenticated:
         active_character = request.user.profile.get_active_character()
         if active_character:
-            location_id = active_character.situation.location.id
             if active_character.is_active:
+                location_id = active_character.situation.location.id
                 logs = Event.objects.filter(
                     recipients=active_character).order_by('-created')
                 location = get_object_or_404(Location, pk=location_id)
