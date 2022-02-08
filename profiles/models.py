@@ -8,7 +8,7 @@ from characters.models import Character
 
 class UserProfile(models.Model):
     user = models.OneToOneField(
-        User, on_delete=models.PROTECT, related_name="profile")
+        User, on_delete=models.CASCADE, related_name="profile")
     active_character = models.ForeignKey(
         'characters.Character', null=True, blank=True, on_delete=models.SET_NULL)
     is_active = models.BooleanField(null=False, blank=False, default=True)

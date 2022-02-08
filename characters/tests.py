@@ -6,7 +6,6 @@ from django.utils.crypto import get_random_string
 
 from .models import Character
 from .forms import CharacterForm, EditCharacterForm
-from .helpers import get_active_character
 
 
 class CharactersTest(TestCase):
