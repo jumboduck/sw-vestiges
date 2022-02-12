@@ -19,10 +19,12 @@
                 </a>
             </h5>
             {% for character in char_sit.characters %}
-            <a href="#characterModal{{ character.id }}" data-bs-toggle="modal"
-                data-bs-target="#characterModal{{ character.id }}">
-                {{ character.first_name }} {{ character.last_name }}
-            </a>
+            <div>
+                <a href="#characterModal{{ character.id }}" data-bs-toggle="modal"
+                    data-bs-target="#characterModal{{ character.id }}">
+                    {{ character.first_name }} {{ character.last_name }}
+                </a>
+            </div>
 
             <div class="modal" id="characterModal{{ character.id }}" tabindex="-1" role="dialog"
                 aria-labelledby="characterModalLabel{{ character.id }}" aria-hidden="true">
