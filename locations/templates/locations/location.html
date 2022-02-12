@@ -47,17 +47,17 @@
             {% for log in logs %}
             <div class="log-box {{ log.identifier }}">
                 {% if log.author %}
-                <div class="h6 author">{{ log.author }}</div>
-                {% endif %}
-                <div class="content">
-                    {{ log.content|linebreaks }}
+                <div>
+                    <div class="author">{{ log.author }}</div>
+                    {% endif %}
+                    <div class="content">
+                        {{ log.content|linebreaks }}
+                    </div>
+                    <div class="audience">
+                        Destinataires:
+                        {{ log.recipients.all|join:', ' }}
+                    </div>
                 </div>
-                {% if log.identifier == 'dialogue' %}
-                <div class="audience">
-                    Destinataires:
-                    {{ log.recipients.all|join:', ' }}
-                </div>
-                {% endif %}
             </div>
             <hr>
             {% endfor %}

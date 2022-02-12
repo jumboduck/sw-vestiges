@@ -2,7 +2,8 @@
 // and btn-primary will become red
 
 // $primary: red;
-$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+$fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
+$swv-icon-path: "../../build/vendors/icons";
 
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
@@ -13,14 +14,59 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
   background-color: #ebebeb;
   padding: 1rem;
   margin-bottom: 1rem;
+  display: flex;
+  border-radius: 10px;
 
-    .author {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
+  &::before {
+    content: "";
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin-right: 0.8rem;
+  }
 
-    .audience {
-      font-size: 0.8rem;
-      opacity: 0.5;
+  .author {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .audience {
+    font-size: 0.8rem;
+    opacity: 0.5;
+  }
+}
+
+.log-box.deplacement {
+  background-color: transparent;
+  font-style: italic;
+  font-weight: 700;
+  align-items: center;
+  padding: 0.5rem 1rem;
+
+  &::before {
+    background: url("#{$swv-icon-path}/deplacement.png") no-repeat;
+    background-size: cover;
+  }
+
+  .author {
+    display: none;
+  }
+
+  .content {
+    p {
+      margin-bottom: 0;
     }
+  }
+
+  .audience {
+    display: none;
+  }
+}
+
+.log-box.dialogue {
+  &::before {
+    background: url("#{$swv-icon-path}/dialogue.png") no-repeat;
+    background-size: cover;
+  }
 }
