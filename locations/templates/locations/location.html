@@ -71,8 +71,8 @@
             {% endfor %}
         </div>
 
-        <div class="col-md-3">
-            <nav class="actions">
+        <div class="col-md-3 actions text-center">
+            <nav>
                 <h3>Actions</h3>
                 <hr>
                 <ul class="list-unstyled">
@@ -80,7 +80,21 @@
                     <li><a class="underline" href="{% url 'create_message' %}">Ecrire un RP</a></li>
                 </ul>
             </nav>
+
+            <div class="row">
+                <div class="col-5">
+                    <hr>
+                </div>
+                <div class="col-2 text-center">
+                    <i class="fa-brands fa-empire" style="font-size: 30px"></i>
+                </div>
+                <div class="col-5">
+                    <hr>
+                </div>
+            </div>
+
         </div>
+
     </div>
 
     {% endblock %}
