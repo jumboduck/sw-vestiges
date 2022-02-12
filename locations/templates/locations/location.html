@@ -9,10 +9,15 @@
             <p>{{ location.description }}</p>
         </div>
     </div>
-    <div class="row mb-5">
+
+    <div class="row">
         {% for char_sit in characters_situations %}
         <div class="col">
-            <h5><a href="{% url 'move_active_character' char_sit.situation.id %}">{{ char_sit.situation.name }}</a></h5>
+            <h5>
+                <a class="underline" href="{% url 'move_active_character' char_sit.situation.id %}">
+                    {{ char_sit.situation.name }}
+                </a>
+            </h5>
             {% for character in char_sit.characters %}
             <a href="#characterModal{{ character.id }}" data-bs-toggle="modal"
                 data-bs-target="#characterModal{{ character.id }}">
@@ -39,8 +44,9 @@
             {% endfor %}
         </div>
         {% endfor %}
-        <hr>
     </div>
+
+    <hr>
 
     <div class="row">
         <div class="col-md-9">
@@ -64,11 +70,14 @@
         </div>
 
         <div class="col-md-3">
-            <h3>Actions:</h3>
-            <ul>
-                <li><a href="{% url 'view_active_character_destinations' %}">Se déplacer</a></li>
-                <li><a href="{% url 'create_message' %}">Ecrire un RP</a></li>
-            </ul>
+            <nav class="actions">
+                <h3>Actions</h3>
+                <hr>
+                <ul class="list-unstyled">
+                    <li><a class="underline" href="{% url 'view_active_character_destinations' %}">Se déplacer</a></li>
+                    <li><a class="underline" href="{% url 'create_message' %}">Ecrire un RP</a></li>
+                </ul>
+            </nav>
         </div>
     </div>
 

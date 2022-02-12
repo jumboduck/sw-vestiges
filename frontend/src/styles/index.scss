@@ -10,8 +10,40 @@ $swv-icon-path: "./../../vendors/icons";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
 
+a {
+  color: $green;
+  text-decoration: none;
+
+  &:hover {
+    color: $green-400;
+  }
+}
+
+.underline {
+  position: relative;
+}
+
+.underline::before {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 0;
+  height: 1px;
+  background-color: $green-400;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .underline:hover::before {
+    left: 0;
+    right: auto;
+    width: 100%;
+  }
+}
+
 .log-box {
-  background-color: #ebebeb;
+  background-color: $gray-200;
   padding: 1rem;
   margin-bottom: 1rem;
   display: flex;
@@ -69,4 +101,17 @@ $swv-icon-path: "./../../vendors/icons";
     background: url("#{$swv-icon-path}/dialogue.png") no-repeat;
     background-size: cover;
   }
+}
+
+.actions {
+  // background-color: $gray-200;
+  padding: 1rem;
+  position: -webkit-sticky;
+  position: -moz-sticky;
+  position: -ms-sticky;
+  position: -o-sticky;
+  position: sticky;
+  height: 300px;
+  top: 10px;
+  bottom: auto;
 }
