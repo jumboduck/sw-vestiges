@@ -14,9 +14,8 @@
         <div class="col">
             <h5><a href="{% url 'move_active_character' char_sit.situation.id %}">{{ char_sit.situation.name }}</a></h5>
             {% for character in char_sit.characters %}
-            <p></p>
-            <a href="#characterModal{{ character.id }}" data-toggle="modal"
-                data-target="#characterModal{{ character.id }}">
+            <a href="#characterModal{{ character.id }}" data-bs-toggle="modal"
+                data-bs-target="#characterModal{{ character.id }}">
                 {{ character.first_name }} {{ character.last_name }}
             </a>
 
@@ -28,8 +27,7 @@
                             <h5 class="modal-title" id="characterModalLabel{{ character.id }}">
                                 {{ character.first_name}} {{ character.last_name }}
                             </h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                             </button>
                         </div>
                         <div class="modal-body">
