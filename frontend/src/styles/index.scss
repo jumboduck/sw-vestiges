@@ -3,7 +3,7 @@
 
 // $primary: red;
 $fa-font-path: "~@fortawesome/fontawesome-free/webfonts";
-$swv-icon-path: "../../build/vendors/icons";
+$swv-icon-path: "./../../vendors/icons";
 
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
