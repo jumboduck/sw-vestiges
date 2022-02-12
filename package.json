@@ -3,7 +3,7 @@
   "version": "0.0.10",
   "description": "Webpack boilerplate for Django & Flask",
   "engines": {
-    "node": "17.5.0"
+    "node": "16"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config frontend/webpack/webpack.config.prod.js",
