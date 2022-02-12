@@ -3,9 +3,9 @@
   "version": "0.0.10",
   "description": "Webpack boilerplate for Django & Flask",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack/webpack.config.prod.js",
-    "start": "webpack serve --config webpack/webpack.config.dev.js",
-    "watch": "webpack --watch --config webpack/webpack.config.watch.js"
+    "build": "cross-env NODE_ENV=production webpack --config frontend/webpack/webpack.config.prod.js",
+    "start": "webpack serve --config frontend/webpack/webpack.config.dev.js",
+    "watch": "webpack --watch --config frontend/webpack/webpack.config.watch.js"
   },
   "repository": {
     "type": "git",
@@ -55,7 +55,6 @@
     "@babel/polyfill": "^7.12.1",
     "@fortawesome/fontawesome-free": "^6.0.0",
     "bootstrap": "^5.1.1",
-    "core-js": "^3.16.1",
-    "font-awesome": "^4.7.0"
+    "core-js": "^3.16.1"
   }
 }

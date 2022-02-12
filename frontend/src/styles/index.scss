@@ -2,19 +2,12 @@
 // and btn-primary will become red
 
 // $primary: red;
-
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 @import "~bootstrap/scss/bootstrap.scss";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
-
-.jumbotron {
-  // should be relative path of the entry scss file
-  background-image: url("../../vendors/images/sample.jpg");
-  background-size: cover;
-}
 
 .log-box {
   background-color: #ebebeb;
