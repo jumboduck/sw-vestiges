@@ -8,6 +8,11 @@ class EventType(models.Model):
     image = models.ImageField(upload_to='events', null=True, blank=True)
     description = models.TextField(max_length=500, null=False, blank=False)
 
+    @property
+    def identifier(self):
+        edited_name = ''.join(e for e in self.name if e.isalnum())
+        return edited_name.lower()
+
     def __str__(self):
         return f'{self.name}'
 
@@ -27,6 +32,10 @@ class Event(models.Model):
     created = models.DateTimeField(null=False, blank=False, auto_now_add=True)
     updated = models.DateTimeField(null=True, blank=True, auto_now=True)
     content = models.TextField(max_length=4000, null=True, blank=True)
+
+    @property
+    def identifier(self):
+        return self.event_type.identifier
 
     def __str__(self):
         message = ''

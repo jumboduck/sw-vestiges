@@ -11,4 +11,16 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 
 .log-box {
   background-color: #ebebeb;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+    .author {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .audience {
+      font-size: 0.8rem;
+      opacity: 0.5;
+    }
 }
