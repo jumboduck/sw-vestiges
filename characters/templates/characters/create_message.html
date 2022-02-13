@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col">
             <h1>Ecrire un message</h1>
-            <form action=" {% url 'create_message' %}" method="POST" id="create-message-form" class="form mb-2"
+            <form action="{% url 'create_message' %}" method="POST" id="create-message-form" class="form mb-2"
                 enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form | crispy}}
-                <button class="btn btn-primary" type="submit">Envoyer le message</button>
+                <button class="btn btn-dark" type="submit">Envoyer le message</button>
             </form>
         </div>
     </div>
