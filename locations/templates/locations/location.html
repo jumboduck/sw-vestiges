@@ -22,10 +22,10 @@
             <div>
                 <a href="#characterModal{{ character.id }}" data-bs-toggle="modal"
                     data-bs-target="#characterModal{{ character.id }}">
+                    {{ character.first_name }} {{ character.last_name }}
                     {% if character == active_character %}
                     <i class="fa-solid fa-location-dot"></i>
                     {% endif %}
-                    {{ character.first_name }} {{ character.last_name }}
                 </a>
             </div>
 
