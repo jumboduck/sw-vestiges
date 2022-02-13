@@ -9,6 +9,7 @@ $swv-icon-path: "./../../vendors/icons";
 @import "~@fortawesome/fontawesome-free/scss/fontawesome";
 @import "~@fortawesome/fontawesome-free/scss/brands";
 @import "~@fortawesome/fontawesome-free/scss/regular";
+@import "~@fortawesome/fontawesome-free/scss/solid";
 @import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap");
 
 h1,
@@ -53,6 +54,12 @@ a {
     right: auto;
     width: 100%;
   }
+}
+
+.grey-box {
+  background-color: $gray-200;
+  padding: 1rem;
+  border-radius: 10px;
 }
 
 .log-box {

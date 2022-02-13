@@ -17,7 +17,7 @@ def view_location(request, location_id):
             characters = Character.objects.filter(situation=situation)
             data = {
                 'situation': situation,
-                'characters': characters
+                'characters': characters,
             }
             characters_situations.append(data)
 

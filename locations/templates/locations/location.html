@@ -5,11 +5,11 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>{{ location.name }}</h1>
-            <p>{{ location.description }}</p>
+            <h1><i class="fa-solid fa-location-crosshairs"></i> {{ location.name }}</h1>
+            <div class="grey-box">{{ location.description|linebreaks }}</div>
         </div>
     </div>
-
+    <hr>
     <div class="row">
         {% for char_sit in characters_situations %}
         <div class="col">
@@ -22,6 +22,9 @@
             <div>
                 <a href="#characterModal{{ character.id }}" data-bs-toggle="modal"
                     data-bs-target="#characterModal{{ character.id }}">
+                    {% if character == active_character %}
+                    <i class="fa-solid fa-location-dot"></i>
+                    {% endif %}
                     {{ character.first_name }} {{ character.last_name }}
                 </a>
             </div>

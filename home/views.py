@@ -31,6 +31,7 @@ def index(request):
                     'location': location,
                     'characters_situations': characters_situations,
                     'logs': logs,
+                    "active_character": active_character,
                 }
                 template = 'locations/location.html'
 
