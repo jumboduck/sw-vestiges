@@ -52,7 +52,7 @@ a {
   &::before {
     content: "";
     display: inline-block;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     margin-right: 0.8rem;
   }
@@ -104,14 +104,16 @@ a {
 }
 
 .actions {
-  // background-color: $gray-200;
   padding: 1rem;
   position: -webkit-sticky;
   position: -moz-sticky;
   position: -ms-sticky;
   position: -o-sticky;
   position: sticky;
-  height: 300px;
+  height: 175px;
   top: 10px;
+  transform: translateY(-10px);
   bottom: auto;
+  background-color: $white;
+  z-index: 10;
 }

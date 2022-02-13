@@ -51,27 +51,8 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-9">
-            {% for log in logs %}
-            <div class="log-box {{ log.identifier }}">
-                {% if log.author %}
-                <div>
-                    <div class="author">{{ log.author }}</div>
-                    {% endif %}
-                    <div class="content">
-                        {{ log.content|linebreaks }}
-                    </div>
-                    <div class="audience">
-                        Destinataires:
-                        {{ log.recipients.all|join:', ' }}
-                    </div>
-                </div>
-            </div>
-            <hr>
-            {% endfor %}
-        </div>
 
-        <div class="col-md-3 actions text-center">
+        <div class="col-md-3 actions text-center order-md-last">
             <nav>
                 <h3>Actions</h3>
                 <hr>
@@ -94,6 +75,27 @@
             </div>
 
         </div>
+
+        <div class="col-md-9">
+            {% for log in logs %}
+            <div class="log-box {{ log.identifier }}">
+                {% if log.author %}
+                <div>
+                    <div class="author">{{ log.author }}</div>
+                    {% endif %}
+                    <div class="content">
+                        {{ log.content|linebreaks }}
+                    </div>
+                    <div class="audience">
+                        Destinataires:
+                        {{ log.recipients.all|join:', ' }}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            {% endfor %}
+        </div>
+
 
     </div>
 
