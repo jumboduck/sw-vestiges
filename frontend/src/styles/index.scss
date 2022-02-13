@@ -117,3 +117,31 @@ a {
   background-color: $white;
   z-index: 10;
 }
+
+hr.center-diamond {
+  border: 0;
+  height: 1px;
+  width: 20%;
+  position: relative;
+  margin: 30px auto;
+  background: $green-400;
+  box-sizing: content-box;
+  opacity: 1;
+  overflow: visible;
+
+  &::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    background: $green-400;
+    display: inline-block;
+    border: 2px solid $green-400;
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    margin: 0 0 0 -3px;
+    transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+  }
+}
