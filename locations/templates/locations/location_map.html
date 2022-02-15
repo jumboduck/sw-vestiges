@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<div id="map-container" class="container" style="height: 90vh"></div>
+
+{% endblock %}
+
+{% block postload_js %}
+<script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.8.0/js/anychart-graph.min.js"></script>
+
+<script>
+    const jsonData = JSON.parse('{{ locations_json | escapejs }}');
+
+    // The chart code goes here.
+    // create a chart from the loaded data
+    const chart = anychart.graph(jsonData);
+    const green = "#198754";
+
+    // set the title
+    chart.title("Carte de lieux dans ISD Phénix");
+
+
+    let nodes = chart.nodes()
+    nodes.shape('diamond');
+    nodes.normal().height(30);
+    nodes.normal().fill("#fff");
+    nodes.hovered().fill("#fff");
+    nodes.normal().stroke(green, 2);
+    nodes.hovered().stroke(green, 2);
+
+    // enable the labels of nodes
+    nodes.labels().enabled(true);
+    nodes.labels().format("{%label}");
+    nodes.labels().fontSize(12);
+    nodes.labels().fontWeight(600);
+    nodes.tooltip().enabled(false);
+
+    let edges = chart.edges()
+    edges.normal().stroke(green, 2);
+    edges.hovered().stroke(green, 2);
+    edges.selected().stroke(green, 2);
+    edges.tooltip().enabled(false);
+
+    // draw the chart
+    chart.container("map-container").draw();
+
+</script>
+{% endblock %}
