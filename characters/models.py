@@ -55,13 +55,14 @@ class Character(models.Model):
 #         kwargs['force'] = self.force
 #         return name, path, args, kwargs
 
-    # power = models.PositiveIntegerField(null=False, blank=False)
-    # science = models.PositiveIntegerField(null=False, blank=False)
-    # dexterity = models.PositiveIntegerField(null=False, blank=False)
-    # persuasion = models.PositiveIntegerField(null=False, blank=False)
-    # politics = models.PositiveIntegerField(null=False, blank=False)
-    # navigation = models.PositiveIntegerField(null=False, blank=False)
-    # repairs = models.PositiveIntegerField(null=False, blank=False)
-    # demolition = models.PositiveIntegerField(null=False, blank=False)
-    # perception = models.PositiveIntegerField(null=False, blank=False)
-    # force = models.PositiveIntegerField(null=False, blank=False)
+class Attributes(models.Model):
+    power = models.PositiveIntegerField(null=False, blank=False)
+    science = models.PositiveIntegerField(null=False, blank=False)
+    dexterity = models.PositiveIntegerField(null=False, blank=False)
+    persuasion = models.PositiveIntegerField(null=False, blank=False)
+    politics = models.PositiveIntegerField(null=False, blank=False)
+    navigation = models.PositiveIntegerField(null=False, blank=False)
+    repairs = models.PositiveIntegerField(null=False, blank=False)
+    demolition = models.PositiveIntegerField(null=False, blank=False)
+    perception = models.PositiveIntegerField(null=False, blank=False)
+    force = models.PositiveIntegerField(null=False, blank=False)
