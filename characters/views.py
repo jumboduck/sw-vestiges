@@ -167,8 +167,13 @@ def create_message(request):
             return redirect(reverse('home'))
     else:
         form = NewMessageForm()
+
+        logs = Event.objects.filter(
+            recipients=active_character).order_by('-created')
+
         context = {
             'form': form,
+            'logs': logs,
         }
         template = 'characters/create_message.html'
         return render(request, template, context)
