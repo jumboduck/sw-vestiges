@@ -1,0 +1,17 @@
+{% for log in logs %}
+<div class="log-box {{ log.identifier }}">
+    {% if log.author %}
+    <div>
+        <div class="author">{{ log.author }}</div>
+        {% endif %}
+        <div class="content">
+            {{ log.content|linebreaks }}
+        </div>
+        <div class="audience">
+            Destinataires:
+            {{ log.recipients.all|join:', ' }}
+        </div>
+    </div>
+</div>
+<hr class="center-diamond">
+{% endfor %}
