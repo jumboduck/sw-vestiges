@@ -45,13 +45,3 @@ class Event(models.Model):
         else:
             message = f'({date}) {self.event_type}'
         return message
-
-
-class CharacterEvent(models.Model):
-    character = models.ForeignKey(
-        'characters.Character', null=True, blank=True, on_delete=models.CASCADE)
-    event = models.ForeignKey(
-        Event, null=False, blank=False, on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f'{self.character} / {self.character.situation} / {self.event}'

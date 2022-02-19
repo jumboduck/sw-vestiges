@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Event, EventType, CharacterEvent
+from .models import Event, EventType
 
 
 class EventAdmin(admin.ModelAdmin):
@@ -22,15 +22,5 @@ class EventTypeAdmin(admin.ModelAdmin):
     ordering = ('name',)
 
 
-class CharacterEventAdmin(admin.ModelAdmin):
-    list_display = (
-        'character',
-        'event',
-    )
-
-    ordering = ('character',)
-
-
 admin.site.register(Event, EventAdmin)
 admin.site.register(EventType, EventTypeAdmin)
-admin.site.register(CharacterEvent, CharacterEventAdmin)
