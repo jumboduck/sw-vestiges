@@ -12,11 +12,17 @@ class SituationAdmin(admin.ModelAdmin):
     ordering = ('location', 'name',)
 
 
+class SituationInline(admin.StackedInline):
+    model = Situation
+    extra = 0
+
+
 class LocationAdmin(admin.ModelAdmin):
     list_display = (
         'name',
         'is_active',
     )
+    inlines = [SituationInline, ]
 
     ordering = ('name',)
 
@@ -32,6 +38,6 @@ class LocationConnectionAdmin(admin.ModelAdmin):
     ordering = ('origin', 'destination')
 
 
-admin.site.register(Situation, SituationAdmin)
+# admin.site.register(Situation, SituationAdmin)
 admin.site.register(Location, LocationAdmin)
 admin.site.register(LocationConnection, LocationConnectionAdmin)
