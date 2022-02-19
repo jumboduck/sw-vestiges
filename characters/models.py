@@ -20,9 +20,9 @@ class Character(models.Model):
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
 
-#     @property
-#     def location(self):
-#         return self.situation.location
+    @property
+    def location(self):
+        return self.situation.location
 
 
 class Attributes(models.Model):
@@ -37,4 +37,5 @@ class Attributes(models.Model):
     repairs = models.PositiveIntegerField(null=False, blank=False)
     demolition = models.PositiveIntegerField(null=False, blank=False)
     perception = models.PositiveIntegerField(null=False, blank=False)
+    piloting = models.PositiveIntegerField(null=False, blank=False)
     force = models.PositiveIntegerField(null=False, blank=False)
