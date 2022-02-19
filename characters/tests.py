@@ -1,3 +1,4 @@
+# from unittest.mock import patch
 from django.test import TestCase
 from django.test.client import Client
 from django.contrib.auth.models import User
@@ -6,6 +7,7 @@ from django.utils.crypto import get_random_string
 
 from .models import Character
 from .forms import CharacterForm, EditCharacterForm
+# from .helpers import dice_roll
 
 
 class CharactersTest(TestCase):
@@ -104,3 +106,18 @@ class CharactersTest(TestCase):
         }
         form = EditCharacterForm(data)
         self.assertFalse(form.is_valid())
+
+
+# @patch('random.randint', return_value=3)
+# class DiceRollTest(TestCase):
+
+#     def test_result_in_expected_range(self, mocked_randint):
+#         stat = 6
+#         expected_range = range(2, 12)
+#         result = dice_roll(stat)
+#         self.assertIn(result, expected_range)
+
+#         stat = 8
+#         expected_range = range(4, 14)
+#         result = dice_roll(stat)
+#         self.assertIn(result, expected_range)
