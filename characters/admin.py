@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Character, Attributes
 
 
-class AttributesInline(admin.TabularInline):
+class AttributesInline(admin.StackedInline):
     model = Attributes
 
 
@@ -21,4 +21,3 @@ class CharacterAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Character, CharacterAdmin)
-# admin.site.register(Attributes, AttributesInline)
