@@ -25,37 +25,9 @@ class Character(models.Model):
 #         return self.situation.location
 
 
-# class AttributesField(models.Field):
-
-#     description = "A character's attributes"
-
-#     def __init__(self, power, science, dexterity, persuasion, politics, navigation, repairs, demolition, perception, force, **kwargs):
-#         self.power = power
-#         self.science = science
-#         self.dexterity = dexterity
-#         self.persuasion = persuasion
-#         self.politics = politics
-#         self.navigation = navigation
-#         self.repairs = repairs
-#         self.demolition = demolition
-#         self.perception = perception
-#         self.force = force
-
-#     def deconstruct(self):
-#         name, path, args, kwargs = super().deconstruct()
-#         kwargs['power'] = self.power
-#         kwargs['science'] = self.science
-#         kwargs['dexterity'] = self.dexterity
-#         kwargs['persuasion'] = self.persuasion
-#         kwargs['politics'] = self.politics
-#         kwargs['navigation'] = self.navigation
-#         kwargs['repairs'] = self.repairs
-#         kwargs['demolition'] = self.demolition
-#         kwargs['perception'] = self.perception
-#         kwargs['force'] = self.force
-#         return name, path, args, kwargs
-
 class Attributes(models.Model):
+    character = models.OneToOneField(Character, on_delete=models.CASCADE,
+                                     primary_key=True, null=False, blank=False)
     power = models.PositiveIntegerField(null=False, blank=False)
     science = models.PositiveIntegerField(null=False, blank=False)
     dexterity = models.PositiveIntegerField(null=False, blank=False)

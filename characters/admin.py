@@ -1,5 +1,9 @@
 from django.contrib import admin
-from .models import Character
+from .models import Character, Attributes
+
+
+class AttributesInline(admin.TabularInline):
+    model = Attributes
 
 
 class CharacterAdmin(admin.ModelAdmin):
@@ -12,7 +16,9 @@ class CharacterAdmin(admin.ModelAdmin):
         'is_alive',
     )
 
+    inlines = [AttributesInline, ]
     ordering = ('last_name', 'first_name',)
 
 
 admin.site.register(Character, CharacterAdmin)
+# admin.site.register(Attributes, AttributesInline)
