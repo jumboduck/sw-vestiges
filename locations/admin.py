@@ -38,6 +38,5 @@ class LocationConnectionAdmin(admin.ModelAdmin):
     ordering = ('origin', 'destination')
 
 
-# admin.site.register(Situation, SituationAdmin)
 admin.site.register(Location, LocationAdmin)
 admin.site.register(LocationConnection, LocationConnectionAdmin)
