@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 
 from .models import Character
 from .forms import CharacterForm, EditCharacterForm, NewMessageForm
+from .helpers import dice_roll
 from events.models import Event, EventType
 from locations.models import Situation
 from locations.helpers import get_possible_destinations, get_characters_in_situation, get_characters_in_location
@@ -177,3 +179,17 @@ def create_message(request):
         }
         template = 'characters/create_message.html'
         return render(request, template, context)
+
+
+@login_required
+def dexterity_test(request):
+    difficulty = 4
+    active_character = request.user.profile.active_character
+    roll = dice_roll(active_character.dexterity.value)
+    if roll >= difficulty:
+        messages.add_message(request, messages.WARNING,
+                             f'Jet de dextérité {roll}/{difficulty}: réussi.')
+    else:
+        messages.add_message(request, messages.SUCCESS,
+                             f'Jet de dextérité {roll}/{difficulty}: échoué.')
+    return redirect(reverse('home'))

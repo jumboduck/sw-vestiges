@@ -25,13 +25,49 @@ class Character(models.Model):
     def location(self):
         return self.situation.location
 
-    @property
-    def power(self):
-        return self.power.attr_value
+    # @property
+    # def power(self):
+    #     return self.power.value
 
-    @property
-    def science(self):
-        return self.science.attr_value
+    # @property
+    # def science(self):
+    #     return self.science.value
+
+    # @property
+    # def xdexterity(self):
+    #     return self.dexterity.value
+
+    # @property
+    # def persuasion(self):
+    #     return self.persuasion.value
+
+    # @property
+    # def politics(self):
+    #     return self.politics.value
+
+    # @property
+    # def navigation(self):
+    #     return self.navigation.attr_value
+
+    # @property
+    # def piloting(self):
+    #     return self.piloting.attr_value
+
+    # @property
+    # def repair(self):
+    #     return self.repair.attr_value
+
+    # @property
+    # def demolition(self):
+    #     return self.demolition.attr_value
+
+    # @property
+    # def perception(self):
+    #     return self.perception.attr_value
+
+    # @property
+    # def force(self):
+    #     return self.force.attr_value
 
 
 class Power(models.Model):

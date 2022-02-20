@@ -14,4 +14,6 @@ urlpatterns = [
          name='view_active_character_destinations'),
     path('create_message/', views.create_message,
          name='create_message'),
+    path('dexterity_test/', views.dexterity_test,
+         name='dexterity_test'),
 ]
