@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator
 
 
 class Character(models.Model):
@@ -26,129 +27,181 @@ class Character(models.Model):
 
     @property
     def power(self):
-        return self.powerattribute.attr_value
+        return self.power.attr_value
+
+    @property
+    def science(self):
+        return self.science.attr_value
 
 
-class PowerAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Power(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    hand_to_hand = models.PositiveIntegerField(
-        null=True, blank=True, default=0)
-    melee = models.PositiveIntegerField(null=True, blank=True, default=0)
-    heavy_weapons = models.PositiveIntegerField(
-        null=True, blank=True, default=0)
-    vigor = models.PositiveIntegerField(null=True, blank=True, default=0)
+    hand_to_hand = models.PositiveIntegerField(validators=[MinValueValidator(3)],
+                                               null=True, blank=True, default=3)
+    melee = models.PositiveIntegerField(null=True, blank=True, default=3)
+    heavy_weapons = models.PositiveIntegerField(validators=[MinValueValidator(3)],
+                                                null=True, blank=True, default=3)
+    vigor = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class ScienceAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Science(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    medicine = models.PositiveIntegerField(null=True, blank=True, default=0)
-    bacta = models.PositiveIntegerField(null=True, blank=True, default=0)
-    cybernetics = models.PositiveIntegerField(null=True, blank=True, default=0)
-    survival = models.PositiveIntegerField(null=True, blank=True, default=0)
-    xenobiology = models.PositiveIntegerField(null=True, blank=True, default=0)
-    critical = models.PositiveIntegerField(null=True, blank=True, default=0)
+    medicine = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    bacta = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    cybernetics = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    survival = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    xenobiology = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    critical = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class DexterityAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Dexterity(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    firing = models.PositiveIntegerField(null=True, blank=True, default=0)
-    throwing = models.PositiveIntegerField(null=True, blank=True, default=0)
-    jetpack = models.PositiveIntegerField(null=True, blank=True, default=0)
-    dodge = models.PositiveIntegerField(null=True, blank=True, default=0)
-    parade = models.PositiveIntegerField(null=True, blank=True, default=0)
-    speed = models.PositiveIntegerField(null=True, blank=True, default=0)
+    firing = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    throwing = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    jetpack = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    dodge = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    parade = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    speed = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class PersuasionAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Persuasion(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    intimidation = models.PositiveIntegerField(
-        null=True, blank=True, default=0)
-    command = models.PositiveIntegerField(null=True, blank=True, default=0)
-    charisma = models.PositiveIntegerField(null=True, blank=True, default=0)
-    seduction = models.PositiveIntegerField(null=True, blank=True, default=0)
+    intimidation = models.PositiveIntegerField(validators=[MinValueValidator(3)],
+                                               null=True, blank=True, default=3)
+    command = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    charisma = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    seduction = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class PoliticsAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Politics(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    take_position = models.PositiveIntegerField(
-        null=True, blank=True, default=0)
-    contest_position = models.PositiveIntegerField(
-        null=True, blank=True, default=0)
-    start_rumor = models.PositiveIntegerField(null=True, blank=True, default=0)
-    bribe = models.PositiveIntegerField(null=True, blank=True, default=0)
-    poise = models.PositiveIntegerField(null=True, blank=True, default=0)
-    scheming = models.PositiveIntegerField(null=True, blank=True, default=0)
-    cultures = models.PositiveIntegerField(null=True, blank=True, default=0)
-    promotion = models.PositiveIntegerField(null=True, blank=True, default=0)
+    take_position = models.PositiveIntegerField(validators=[MinValueValidator(3)],
+                                                null=True, blank=True, default=3)
+    contest_position = models.PositiveIntegerField(validators=[MinValueValidator(3)],
+                                                   null=True, blank=True, default=3)
+    start_rumor = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    bribe = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    poise = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    scheming = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    cultures = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    promotion = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class NavigationAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Navigation(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    shields = models.PositiveIntegerField(null=True, blank=True, default=0)
-    artillery = models.PositiveIntegerField(null=True, blank=True, default=0)
-    sensors = models.PositiveIntegerField(null=True, blank=True, default=0)
-    astronavigation = models.PositiveIntegerField(
-        null=True, blank=True, default=0)
-    astronomy = models.PositiveIntegerField(null=True, blank=True, default=0)
+    shields = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    artillery = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    sensors = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    astronavigation = models.PositiveIntegerField(validators=[MinValueValidator(3)],
+                                                  null=True, blank=True, default=3)
+    astronomy = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class PilotingAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Piloting(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    lasers = models.PositiveIntegerField(null=True, blank=True, default=0)
-    missiles = models.PositiveIntegerField(null=True, blank=True, default=0)
-    control = models.PositiveIntegerField(null=True, blank=True, default=0)
-    dodge = models.PositiveIntegerField(null=True, blank=True, default=0)
-    tactics = models.PositiveIntegerField(null=True, blank=True, default=0)
-    adaptation = models.PositiveIntegerField(null=True, blank=True, default=0)
+    lasers = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    missiles = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    control = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    dodge = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    tactics = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    adaptation = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class RepairAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Repair(models.Model):
+    value = models.PositiveIntegerField(null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    ships = models.PositiveIntegerField(null=True, blank=True, default=0)
-    droids = models.PositiveIntegerField(null=True, blank=True, default=0)
-    comms = models.PositiveIntegerField(null=True, blank=True, default=0)
-    system_d = models.PositiveIntegerField(null=True, blank=True, default=0)
-    tactics = models.PositiveIntegerField(null=True, blank=True, default=0)
-    jamming = models.PositiveIntegerField(null=True, blank=True, default=0)
+    ships = models.PositiveIntegerField(null=True, blank=True, default=3)
+    droids = models.PositiveIntegerField(null=True, blank=True, default=3)
+    comms = models.PositiveIntegerField(null=True, blank=True, default=3)
+    system_d = models.PositiveIntegerField(null=True, blank=True, default=3)
+    tactics = models.PositiveIntegerField(null=True, blank=True, default=3)
+    jamming = models.PositiveIntegerField(null=True, blank=True, default=3)
 
 
-class DemolitionAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Demolition(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    traps = models.PositiveIntegerField(null=True, blank=True, default=0)
-    explosives = models.PositiveIntegerField(null=True, blank=True, default=0)
+    traps = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    explosives = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class PerceptionAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Perception(models.Model):
+    value = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
-    search = models.PositiveIntegerField(null=True, blank=True, default=0)
-    clues = models.PositiveIntegerField(null=True, blank=True, default=0)
-    hear_rumor = models.PositiveIntegerField(null=True, blank=True, default=0)
-    detect_trap = models.PositiveIntegerField(null=True, blank=True, default=0)
-    scouting = models.PositiveIntegerField(null=True, blank=True, default=0)
+    search = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    clues = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    hear_rumor = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    detect_trap = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
+    scouting = models.PositiveIntegerField(
+        validators=[MinValueValidator(3)], null=True, blank=True, default=3)
 
 
-class ForceAttribute(models.Model):
-    attr_value = models.PositiveIntegerField(null=True, blank=True, default=0)
+class Force(models.Model):
+    value = models.PositiveIntegerField(null=True, blank=True, default=0)
     character = models.OneToOneField(
         Character, null=True, on_delete=models.CASCADE)
     confusion = models.PositiveIntegerField(null=True, blank=True, default=0)

@@ -1,51 +1,50 @@
 from django.contrib import admin
-from .models import Character, PowerAttribute, ScienceAttribute, DexterityAttribute, \
-    PersuasionAttribute, PoliticsAttribute, NavigationAttribute, PilotingAttribute, \
-    RepairAttribute, DemolitionAttribute, PerceptionAttribute, ForceAttribute
+from .models import Character, Power, Science, Dexterity, Persuasion, Politics, Navigation, Piloting, \
+    Repair, Demolition, Perception, Force
 
 
 class PowerAttrInline(admin.TabularInline):
-    model = PowerAttribute
+    model = Power
 
 
 class ScienceAttrInline(admin.TabularInline):
-    model = ScienceAttribute
+    model = Science
 
 
 class DexterityAttrInline(admin.TabularInline):
-    model = DexterityAttribute
+    model = Dexterity
 
 
 class PersuasionAttrInline(admin.TabularInline):
-    model = PersuasionAttribute
+    model = Persuasion
 
 
 class PoliticsAttrInline(admin.TabularInline):
-    model = PoliticsAttribute
+    model = Politics
 
 
 class NavigationAttrInline(admin.TabularInline):
-    model = NavigationAttribute
+    model = Navigation
 
 
 class PilotingAttrInline(admin.TabularInline):
-    model = PilotingAttribute
+    model = Piloting
 
 
 class RepairAttrInline(admin.TabularInline):
-    model = RepairAttribute
+    model = Repair
 
 
 class DemolitionAttrInline(admin.TabularInline):
-    model = DemolitionAttribute
+    model = Demolition
 
 
 class PerceptionAttrInline(admin.TabularInline):
-    model = PerceptionAttribute
+    model = Perception
 
 
 class ForceAttrInline(admin.TabularInline):
-    model = ForceAttribute
+    model = Force
 
 
 class CharacterAdmin(admin.ModelAdmin):
