@@ -1,5 +1,7 @@
 from django.db import models
 from django.core.validators import MinValueValidator
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 
 class Character(models.Model):
@@ -165,3 +167,19 @@ class Force(models.Model):
     focus = models.PositiveIntegerField(null=True, blank=True, default=0)
     psychic_protection = models.PositiveIntegerField(
         null=True, blank=True, default=0)
+
+
+@receiver(post_save, sender=Character)
+def create_attributes(sender, instance, created, **kwargs):
+    if created:
+        Power.objects.create(character=instance)
+        Science.objects.create(character=instance)
+        Dexterity.objects.create(character=instance)
+        Persuasion.objects.create(character=instance)
+        Politics.objects.create(character=instance)
+        Navigation.objects.create(character=instance)
+        Piloting.objects.create(character=instance)
+        Repair.objects.create(character=instance)
+        Demolition.objects.create(character=instance)
+        Perception.objects.create(character=instance)
+        Force.objects.create(character=instance)
