@@ -168,3 +168,16 @@ hr.center-diamond {
     -webkit-transform: rotate(45deg);
   }
 }
+
+.message-container {
+  position: absolute;
+  right: 20px;
+}
+
+.toast-warning {
+  border-right: 5px solid $red;
+}
+
+.toast-success {
+  border-right: 5px solid $green;
+}

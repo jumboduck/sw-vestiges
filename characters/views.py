@@ -187,9 +187,9 @@ def dexterity_test(request):
     active_character = request.user.profile.active_character
     roll = dice_roll(active_character.dexterity.value)
     if roll >= difficulty:
-        messages.add_message(request, messages.WARNING,
+        messages.add_message(request, messages.SUCCESS,
                              f'Jet de dextérité {roll}/{difficulty}: réussi.')
     else:
-        messages.add_message(request, messages.SUCCESS,
+        messages.add_message(request, messages.WARNING,
                              f'Jet de dextérité {roll}/{difficulty}: échoué.')
     return redirect(reverse('home'))
