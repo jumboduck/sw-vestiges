@@ -2,6 +2,7 @@
 {% load static %}
 {% block content %}
 
+
 <div class="container">
     <div class="row">
         <div class="col">
@@ -55,13 +56,33 @@
 
     <div class="row">
 
-        <div class="col">
+        <div class="col-md-3 actions text-center order-md-last">
+            <nav>
+                <h3>Actions</h3>
+                <hr class="center-diamond w-100">
+                <ul class="list-unstyled">
+                    <li><a class="underline" href="{% url 'view_active_character_destinations' %}">Se déplacer</a></li>
+                    <li><a class="underline" href="{% url 'create_message' %}">Ecrire un RP</a></li>
+                    <li><a class="underline" href="{% url 'dexterity_test' %}">Jet de dextérité</a></li>
+                </ul>
+            </nav>
 
-            {% include "locations/includes/logs.html" %}
-
+            <div class="row">
+                <div class="col-5">
+                    <hr>
+                </div>
+                <div class="col-2 text-center">
+                    <i class="fa-brands fa-empire" style="font-size: 30px"></i>
+                </div>
+                <div class="col-5">
+                    <hr>
+                </div>
+            </div>
         </div>
 
-
+        <div class="col-md-9">
+            {% include "locations/includes/logs.html" %}
+        </div>
     </div>
 
     {% endblock %}
