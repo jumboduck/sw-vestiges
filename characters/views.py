@@ -81,9 +81,11 @@ def move_active_character(request, destination_id):
             situation_origin=active_character.situation
         )
         event.save()
-        list_of_recipients = get_characters_in_location(
-            current_location.location
-        )
+        origin_recipients = get_characters_in_location(
+            current_location.location)
+        destination_recipients = get_characters_in_location(
+            chosen_destination.location)
+        list_of_recipients = origin_recipients | destination_recipients
         event.recipients.set(list_of_recipients)
         event.save()
         active_character.situation = chosen_destination
