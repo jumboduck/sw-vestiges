@@ -5,7 +5,7 @@ from characters.models import Character
 from locations.helpers import get_characters_in_location
 from events.models import Event, EventType
 
-
+# Change to this file new code etc
 # @staff_member_required
 # def create_animation_message(request, location):
 #     if request.POST:
